@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../style/DataPage.css";
+import { useNavigate } from "react-router-dom";
 
 function DataPage() {
+   const navigate = useNavigate();
   const [dataFilter, setDataFilter] = useState("");
   const [data, setData] = useState([]);
 
+  
+  const nextQuestion = () => {
+    navigate("/test");
+    
+  };
   useEffect(() => {
     const getData = async () => {
       const myData = await axios.get("http://localhost:3000/loadcsv");
@@ -14,25 +21,11 @@ function DataPage() {
     getData();
   }, [dataFilter]);
 
-//   const filtered = () => {
-//     Object.values(data)
-//       .filter((e) => e.city.toLowerCase().includes(dataFilter.toLowerCase()))
-//       .map((e) => {
-//         return (
-//           <tr key={e.eventid}>
-//             <td>{e.eventid}</td>
-//             <td>{e.iyear}</td>
-//             <td>{e.country_txt}</td>
-//             <td>{e.city}</td>
-//             <td>{e.attacktype1_txt}</td>
-//             <td>{e.motive}</td>
-//           </tr>
-//         );
-//       });
-//   };
 
   return (
     <div>
+      <button onClick={nextQuestion}>go to test</button>
+      <hr />
       <input type="text" onChange={(e) => setDataFilter(e.target.value)} />
       <div className="filtredBox">
         <label>Filter by: </label>

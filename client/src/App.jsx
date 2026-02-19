@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <Routes>
-          <Route path="/data" element={<DataPage />} />
+          <Route path="/" element={<DataPage />} />
           <Route path="/test" element={<DynamicTestPage />} />
         </Routes>
       </BrowserRouter>
